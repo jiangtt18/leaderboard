@@ -6,11 +6,18 @@ export default class Table extends Component {
 		super(props);
 		this.state = {
 			users: usersJSON
-		}
+		};
+
+		this.compareByAge = this.compareByAge.bind(this);
+		this.compareByName = this.compareByName.bind(this);
+		this.compareByPoints = this.compareByPoints.bind(this);
+		this.compareByRank = this.compareByRank.bind(this);
 	}
 
-	componentWillReceiveProps() {
-		
+	componentWillReceiveProps(nextProps) {
+		let type = nextProps.sortBy;
+		let sortedData = this.sortUser(type);
+		this.setState({users: sortedData});
 	}
 
     // complete the comparators
@@ -35,6 +42,27 @@ export default class Table extends Component {
 	compareByRank(a, b) {
 		return a - b;
 	}
+
+	sortUser = (type) => {
+		let sorted = [];
+		let {users} = this.state;
+		switch(type){
+			case 'name':
+				sorted = users.sort((a, b) => (this.compareByName(a.name, b.name)));
+				break;
+			case 'age':
+				sorted = users.sort((a,b) => (this.compareByAge(a.age,b.age)));
+				break;
+			case 'points':
+				sorted = users.sort((a,b) => (this.compareByPoints(a.points,b.points)));
+				break;
+			case 'rank':
+				sorted = users.sort((a,b) => (this.compareByRank(a.rank,b.rank)));
+				break;
+		}
+		return sorted;
+	};
+
 
 	render() {
 		let rows = this.state.users.map((hash, idx) => {
