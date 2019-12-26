@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {usersJSON} from './data'
 import Age from './components/Age';
 import Name from './components/Name';
 import Points from './components/Points';
@@ -12,7 +13,7 @@ export default class App extends Component {
 
     this.state = {
       sortBy: ""
-    }
+    };
 
   }
 

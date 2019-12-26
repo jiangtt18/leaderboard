@@ -31,16 +31,20 @@ export default class Table extends Component {
 	}
 
 	render() {
- 
+		let rows = this.state.users.map((hash) => {
+			return(
+				<tr key="head">
+					<th>{hash.age}</th>
+					<th>{hash.name}</th>
+					<th>{hash.points}</th>
+					<th>{hash.rank}</th>
+				</tr>
+			)
+		});
 		return (<div>
 			<table className="table table-striped">
 				<thead>
-					<tr key="head">
-						<th>Age</th>
-						<th>Name</th>
-						<th>Points</th>
-						<th>Rank</th>
-					</tr>
+				{rows}
 				</thead>
 				<tbody></tbody>
 			</table>
