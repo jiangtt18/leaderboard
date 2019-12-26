@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Points = ({}) => (
-  <button className="btn btn-primary points" name="points">Points</button>
+const Points = ({onClick}) => (
+  <button className="btn btn-primary points" name="points" onClick={(e) => onClick(e)}>Points</button>
 );
 
 export default Points;

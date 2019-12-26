@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {usersJSON} from './data'
 import Age from './components/Age';
 import Name from './components/Name';
 import Points from './components/Points';
@@ -15,18 +14,27 @@ export default class App extends Component {
       sortBy: ""
     };
 
+    this.handleClickAge = this.handleClickAge.bind(this);
+    this.handleClickName = this.handleClickName.bind(this);
+    this.handleClickPoints = this.handleClickPoints.bind(this);
+    this.handleClickRank = this.handleClickRank.bind(this);
+
   }
 
   handleClickAge() {
+    this.setState({sortBy:'age'})
   }
 
   handleClickName() {
+    this.setState({sortBy:'name'})
   }
 
   handleClickPoints() {
+    this.setState({sortBy:'points'})
   }
 
   handleClickRank() {
+    this.setState({sortBy:'rank'})
   }
 
   render() {
@@ -36,11 +44,11 @@ export default class App extends Component {
           <h1>Leaderboard</h1>
         </header>
         <div className="text-center buttons">
-          <Age></Age>
-          <Name></Name>
-          <Points></Points>
-          <Rank></Rank>
-          <Table></Table>
+          <Age onClick={this.handleClickAge}></Age>
+          <Name onClick={this.handleClickName}></Name>
+          <Points onClick={this.handleClickPoints}></Points>
+          <Rank onClick={this.handleClickRank}></Rank>
+          <Table sortBy={this.state.sortBy}></Table>
         </div>
       </div>
     );
