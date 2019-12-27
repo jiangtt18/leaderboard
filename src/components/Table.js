@@ -78,6 +78,12 @@ export default class Table extends Component {
 		return (<div>
 			<table className="table table-striped">
 				<thead>
+				<tr key={`head`}>
+					<th>Age</th>
+					<th>Name</th>
+					<th>Points</th>
+					<th>Rank</th>
+				</tr>
 				{rows}
 				</thead>
 				<tbody></tbody>
